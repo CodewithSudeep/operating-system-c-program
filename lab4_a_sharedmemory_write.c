@@ -5,7 +5,6 @@
 #include <string.h>
 
 void write_shared();
-void read_shared();
 int main()
 {
     int i;
@@ -22,9 +21,6 @@ int main()
     printf("+ Process attached at %p\n", shared_memory);
     printf("** Writting buffer into shared memory \n");
     write_shared(shared_memory);
-    sleep(4);
-    printf("** Reading buffer from shared memory \n");
-    read_shared(shared_memory);
 }
 
 void write_shared(void *shared_memory)
@@ -34,9 +30,4 @@ void write_shared(void *shared_memory)
     scanf("%s",&buff);
     strcpy(shared_memory, buff); // data written to shared memory
     printf("++ You wrote : %s\n", (char *)shared_memory);
-}
-
-void read_shared(void *shared_memory){
-    printf("- Process attached at %p\n",shared_memory);
-    printf("- Data read from shared memory is : %s\n",(char *)shared_memory);
 }
